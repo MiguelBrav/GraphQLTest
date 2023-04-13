@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLServer", "GraphQLServer\GraphQLServer.csproj", "{B61E685F-E8B4-44F4-9B6A-8A7BCC05D9AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQLServer", "GraphQLServer\GraphQLServer.csproj", "{B61E685F-E8B4-44F4-9B6A-8A7BCC05D9AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLServer.NUnitTest", "GraphQL.NUnitTest\GraphQLServer.NUnitTest.csproj", "{540B514C-1621-4555-9A3D-70F467539A2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B61E685F-E8B4-44F4-9B6A-8A7BCC05D9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B61E685F-E8B4-44F4-9B6A-8A7BCC05D9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B61E685F-E8B4-44F4-9B6A-8A7BCC05D9AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540B514C-1621-4555-9A3D-70F467539A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540B514C-1621-4555-9A3D-70F467539A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540B514C-1621-4555-9A3D-70F467539A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540B514C-1621-4555-9A3D-70F467539A2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
