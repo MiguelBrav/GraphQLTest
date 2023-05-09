@@ -29,7 +29,7 @@ namespace GraphQL.NUnitTest
         [Test]
         public async Task ShouldReturnAllAutores()
         {
-            var query =  @"
+            var query = @"
               query getAutores {
                 autores {
                     pageInfo {
@@ -62,6 +62,54 @@ namespace GraphQL.NUnitTest
             response.EnsureSuccessStatusCode();
 
             Assert.That(responseContent, Does.Contain("data"));
+            Assert.IsNotNull(responseContent);
+
+
+        }
+
+        [Test]
+        public async Task ShouldReturnAutorById()
+        {
+            int autorId = 1;            
+
+            var query = @"  
+            query getAutorById($autorId: Int!){
+                autorById(id: $autorId){
+                id
+                nombre    
+                apellidos
+                email
+                salario
+                publicaciones{
+                  id
+                  titulo
+                  imagenUrl
+                }
+              }
+            }            
+            ";
+
+
+            var request = new
+            {
+                query,
+                variables = new { autorId}
+            };
+
+
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PostAsync("graphql", content);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.That(responseContent, Does.Contain("data"));
+            Assert.That(responseContent, Does.Contain("Javier"));
             Assert.IsNotNull(responseContent);
 
 
