@@ -62,9 +62,8 @@ namespace GraphQL.NUnitTest
             response.EnsureSuccessStatusCode();
 
             Assert.That(responseContent, Does.Contain("data"));
+            Assert.That(responseContent, Does.Contain("autores"));
             Assert.IsNotNull(responseContent);
-
-
         }
 
         [Test]
@@ -111,8 +110,180 @@ namespace GraphQL.NUnitTest
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("Javier"));
             Assert.IsNotNull(responseContent);
+        }
+
+        [Test]
+        public async Task ShouldReturnAllCategorias()
+        {
+            var query = @"
+            query getCategorias{
+              categorias {
+                items{
+                  id
+                  nombre
+                  publicaciones{
+                    id
+                    titulo
+                    contenido
+                  }
+                },
+                totalCount
+              }
+            }
+            
+            ";
+
+            var request = new
+            {
+                query
+            };
+
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PostAsync("graphql", content);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.That(responseContent, Does.Contain("data"));
+            Assert.That(responseContent, Does.Contain("categorias"));
+            Assert.IsNotNull(responseContent);
+        }
+
+        [Test]
+        public async Task ShouldReturnCategoriaById()
+        {
+            int categoryId = 2;
+
+            var query = @"  
+            query getCategoriabyId($categoryId: Int!){
+              categoriaById(id: $categoryId) {
+                id
+                nombre
+                publicaciones{
+                  id
+                  titulo
+                  contenido
+                  imagenUrl
+      
+                }
+              }
+            }
+           
+            ";
 
 
+            var request = new
+            {
+                query,
+                variables = new { categoryId }
+            };
+
+
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PostAsync("graphql", content);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.That(responseContent, Does.Contain("data"));
+            Assert.That(responseContent, Does.Contain("Desarrollo Web"));
+            Assert.IsNotNull(responseContent);
+        }
+
+        [Test]
+        public async Task ShouldReturnAllPublicaciones()
+        {
+            var query = @"
+            query getPublicaciones {
+              publicaciones {
+                items{
+                  id
+                  titulo
+                  contenido
+                  imagenUrl
+                  estado
+                  rating
+                  categoriaId
+                  autorId
+                }
+                totalCount
+              }
+            }
+            
+            ";
+
+            var request = new
+            {
+                query
+            };
+
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PostAsync("graphql", content);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.That(responseContent, Does.Contain("data"));
+            Assert.That(responseContent, Does.Contain("publicaciones"));
+            Assert.IsNotNull(responseContent);
+        }
+
+        [Test]
+        public async Task ShouldReturnPublicacionById()
+        {
+            int publicationId = 1;
+
+            var query = @"  
+            query getPublicacionbyId($publicationId: Int!){
+            publicacionById(id: $publicationId) {
+              id
+              titulo
+              contenido
+              imagenUrl
+              estado
+              rating
+              categoriaId
+              autorId
+            }
+            }
+           
+            ";
+
+
+            var request = new
+            {
+                query,
+                variables = new { publicationId }
+            };
+
+
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await _client.PostAsync("graphql", content);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+
+            Assert.That(responseContent, Does.Contain("data"));
+            Assert.That(responseContent, Does.Contain("Mi primera"));
+            Assert.IsNotNull(responseContent);
         }
 
     }

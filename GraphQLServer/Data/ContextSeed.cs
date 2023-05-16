@@ -35,7 +35,7 @@ public class ContextSeed
 
                 var autores = new List<Autor>()
                 {
-                    new Autor(){ Id=1, Nombre="Miguel",Apellidos="Hernandez",Email="example1@correo.com"},
+                    new Autor(){ Id=1, Nombre="Javier",Apellidos="Hernandez",Email="example1@correo.com"},
                     new Autor(){ Id=2, Nombre="Ayli",Apellidos="Martinez",Email="example2@correo.com"},
                     new Autor(){ Id=3, Nombre="Manuel",Apellidos="Jimenez",Email="example3@correo.com"},
                 };
