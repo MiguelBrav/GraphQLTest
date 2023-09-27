@@ -4,7 +4,7 @@
 ### GraphQLServer ###
 GraphQL Server with Hotchocolate & .Net.
 
-## Usage/Examples for GraphQL
+## Usage/Examples for GraphQL in .net
 You can guide from the unit tests for consuming the graphql api.
 
             var query = @"
@@ -35,7 +35,57 @@ You can guide from the unit tests for consuming the graphql api.
             // Act
             var response = await _client.PostAsync("graphql", content);
 
-The API is available at: "http://graphqltest.somee.com/graphql/".
+## Usage example online
+### Get Autores
+              query getAutores {
+                autores {
+                    pageInfo {
+                        hasNextPage
+                        hasPreviousPage
+                    }
+                    items {
+                        id
+                        nombre
+                        apellidos
+                    }
+                    totalCount
+                }
+            }
+
+### Create Autor
+            mutation addAutor($inputAutor: AutorInputTypeInput!){
+              createAutor(inputAutor:  $inputAutor ) {
+                id
+               nombre
+               apellidos
+               email
+               salario 
+              }
+            }
+
+### Delete Autor
+            mutation addAutor($inputAutor: AutorInputTypeInput!){
+              createAutor(inputAutor:  $inputAutor ) {
+                id
+               nombre
+               apellidos
+               email
+               salario 
+              }
+            }
+
+In the section "Variables", you need to add them, like this.
+
+            {
+              "inputAutor": {
+                "apellidos": "lastname",
+                "email": "example@example.com",
+                "nombre": "firstname",
+                "salario": 1000
+              }  
+            }
+
+The API is available at: "https://booktestapi.application-service.work/graphql/".
 
 ![App Screenshot](https://res.cloudinary.com/imgresd/image/upload/v1695431017/Github/exampleBanana_sgkszv.png)
 ## Running Tests
