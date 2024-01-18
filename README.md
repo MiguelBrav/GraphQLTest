@@ -52,6 +52,22 @@ You can guide from the unit tests for consuming the graphql api.
                 }
             }
 
+### Get Autor by Id
+            query getAutorById($autorId: Int!){
+                autorById(id: $autorId){
+                id
+                nombre    
+                apellidos
+                email
+                salario
+                publicaciones{
+                  id
+                  titulo
+                  imagenUrl
+                }
+              }
+            } 
+
 ### Create Autor
             mutation addAutor($inputAutor: AutorInputTypeInput!){
               createAutor(inputAutor:  $inputAutor ) {
@@ -64,14 +80,71 @@ You can guide from the unit tests for consuming the graphql api.
             }
 
 ### Delete Autor
-            mutation addAutor($inputAutor: AutorInputTypeInput!){
-              createAutor(inputAutor:  $inputAutor ) {
-                id
-               nombre
-               apellidos
-               email
-               salario 
+            mutation deleteAutor($autorId: Int!){
+                      deleteAutor(autorId:  $autorId ) 
+                       
+                    }
+                    
+### Get Categorias
+            query getCategorias{
+              categorias {
+                items{
+                  id
+                  nombre
+                  publicaciones{
+                    id
+                    titulo
+                    contenido
+                  }
+                },
+                totalCount
               }
+            }
+
+### Get Categoria by Id
+            query getCategoriabyId($categoryId: Int!){
+              categoriaById(id: $categoryId) {
+                id
+                nombre
+                publicaciones{
+                  id
+                  titulo
+                  contenido
+                  imagenUrl
+      
+                }
+              }
+            }
+
+## Get Publicaciones
+            query getPublicaciones {
+              publicaciones {
+                items{
+                  id
+                  titulo
+                  contenido
+                  imagenUrl
+                  estado
+                  rating
+                  categoriaId
+                  autorId
+                }
+                totalCount
+              }
+            }
+
+### Get Publicacion by Id
+            query getPublicacionbyId($publicationId: Int!){
+            publicacionById(id: $publicationId) {
+              id
+              titulo
+              contenido
+              imagenUrl
+              estado
+              rating
+              categoriaId
+              autorId
+            }
             }
 
 In the section "Variables", you need to add them, like this.
