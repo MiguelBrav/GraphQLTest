@@ -36,7 +36,7 @@ namespace GraphQL.NUnitTest
                         hasNextPage
                         hasPreviousPage
                     }
-                    items {
+                    nodes {
                         id
                         nombre
                         apellidos
@@ -63,7 +63,7 @@ namespace GraphQL.NUnitTest
 
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("autores"));
-            Assert.IsNotNull(responseContent);
+            Assert.That(responseContent, Is.Not.Null);
         }
 
         [Test]
@@ -109,7 +109,7 @@ namespace GraphQL.NUnitTest
 
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("Javier"));
-            Assert.IsNotNull(responseContent);
+            Assert.That(responseContent, Is.Not.Null);
         }
 
         [Test]
@@ -118,7 +118,7 @@ namespace GraphQL.NUnitTest
             var query = @"
             query getCategorias{
               categorias {
-                items{
+                nodes{
                   id
                   nombre
                   publicaciones{
@@ -150,7 +150,7 @@ namespace GraphQL.NUnitTest
 
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("categorias"));
-            Assert.IsNotNull(responseContent);
+            Assert.That(responseContent, Is.Not.Null);
         }
 
         [Test]
@@ -196,7 +196,8 @@ namespace GraphQL.NUnitTest
 
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("Desarrollo Web"));
-            Assert.IsNotNull(responseContent);
+            Assert.That(responseContent, Is.Not.Null);
+
         }
 
         [Test]
@@ -205,7 +206,7 @@ namespace GraphQL.NUnitTest
             var query = @"
             query getPublicaciones {
               publicaciones {
-                items{
+                nodes{
                   id
                   titulo
                   contenido
@@ -238,7 +239,7 @@ namespace GraphQL.NUnitTest
 
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("publicaciones"));
-            Assert.IsNotNull(responseContent);
+            Assert.That(responseContent, Is.Not.Null);
         }
 
         [Test]
@@ -283,7 +284,7 @@ namespace GraphQL.NUnitTest
 
             Assert.That(responseContent, Does.Contain("data"));
             Assert.That(responseContent, Does.Contain("Mi primera"));
-            Assert.IsNotNull(responseContent);
+            Assert.That(responseContent, Is.Not.Null);
         }
 
     }

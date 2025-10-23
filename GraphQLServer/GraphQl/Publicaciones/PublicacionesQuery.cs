@@ -9,7 +9,7 @@ namespace GraphQLServer.GraphQl.Publicaciones
     {
         //Correct Order
         //[UsePaging(DefaultPageSize=3)] -- Alter pagination model
-        [UseOffsetPaging(IncludeTotalCount = true)]
+        [UsePaging(IncludeTotalCount = true)]
         [UseProjection]
         [UseFiltering]
         [UseSorting]

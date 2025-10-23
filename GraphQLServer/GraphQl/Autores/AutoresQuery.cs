@@ -7,7 +7,7 @@ namespace GraphQLServer.GraphQl.Publicaciones
     [ExtendObjectType(OperationTypeNames.Query)]
     public class AutoresQuery
     {
-        [UseOffsetPaging(IncludeTotalCount = true)]
+        [UsePaging(IncludeTotalCount = true)]
         [UseProjection]
         [UseFiltering]
         [UseSorting]
