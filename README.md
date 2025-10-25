@@ -14,7 +14,7 @@ You can guide from the unit tests for consuming the graphql api.
                         hasNextPage
                         hasPreviousPage
                     }
-                    items {
+                    nodes {
                         id
                         nombre
                         apellidos
@@ -43,7 +43,7 @@ You can guide from the unit tests for consuming the graphql api.
                         hasNextPage
                         hasPreviousPage
                     }
-                    items {
+                    nodes {
                         id
                         nombre
                         apellidos
@@ -88,7 +88,7 @@ You can guide from the unit tests for consuming the graphql api.
 ### Get Categorias
             query getCategorias{
               categorias {
-                items{
+                nodes{
                   id
                   nombre
                   publicaciones{
@@ -119,7 +119,7 @@ You can guide from the unit tests for consuming the graphql api.
 ## Get Publicaciones
             query getPublicaciones {
               publicaciones {
-                items{
+                nodes{
                   id
                   titulo
                   contenido
@@ -167,6 +167,14 @@ To run tests, run GraphQLServerTests.cs from project GraphQLServer.NUnitTest
 
 ![App Screenshot](https://res.cloudinary.com/imgresd/image/upload/v1695431146/Github/testsGraphql_amolkl.png)
 
+
+## Versioning
+
+Updated from .NET 6 to .NET 8 (22/10/25)
+
+## Package References
+
+All NuGet packages updated to compatible .NET 8 versions. (22/10/25)
 
 ## Feedback
 
