@@ -158,7 +158,7 @@ In the section "Variables", you need to add them, like this.
               }  
             }
 
-The API is available at: "https://booktestapi.application-service.work/graphql/".
+The API is available at: "https://graphql.segurab.com/graphql/".
 
 ![App Screenshot](https://res.cloudinary.com/imgresd/image/upload/v1695431017/Github/exampleBanana_sgkszv.png)
 ## Running Tests
